@@ -1,0 +1,60 @@
+﻿@model PiranhaCMS.SampleManagerExtenstion.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@*@section Toolbar {
+    @Html.Partial("Partial/Tabs")
+    <div class="toolbar">
+        <div class="inner">
+            <ul>
+                <li>
+                    <a class="save submit">
+                        @Piranha.Resources.Global.ToolbarSave
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("index")" class="back">
+                        @Piranha.Resources.Global.ToolbarBack
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("edit", new { id = Model.ProductID })" class="refresh">
+                        @Piranha.Resources.Global.ToolbarReload
+                    </a>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+}*@
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName)
+                @Html.ValidationMessageFor(model => model.ProductName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
